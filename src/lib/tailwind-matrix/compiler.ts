@@ -170,15 +170,15 @@ function trySimplifyToVariant<V extends VariantDef, Columns extends readonly str
       // Check if conditions group by other variants
       const groupedByOther = new Map<string, Set<string>>()
       for (const cond of conditions) {
-        const key = otherVariants
+        const conditionKey = otherVariants
           .map((v) => `${v}=${cond[v as keyof V] ?? ''}`)
           .join(',')
-        if (!groupedByOther.has(key)) {
-          groupedByOther.set(key, new Set())
+        if (!groupedByOther.has(conditionKey)) {
+          groupedByOther.set(conditionKey, new Set())
         }
         const value = cond[variant as keyof V]
         if (value !== undefined) {
-          groupedByOther.get(key)!.add(String(value))
+          groupedByOther.get(conditionKey)!.add(String(value))
         }
       }
 
@@ -203,9 +203,9 @@ function trySimplifyToVariant<V extends VariantDef, Columns extends readonly str
               (newCond as Record<string, unknown>)[v] = value
             }
           }
-          const key = JSON.stringify(newCond)
-          if (!seen.has(key)) {
-            seen.add(key)
+          const condKey = JSON.stringify(newCond)
+          if (!seen.has(condKey)) {
+            seen.add(condKey)
             newConditions.push(newCond)
           }
         }
@@ -433,7 +433,7 @@ function removeFirstVar(expr: BooleanExpression, variantKey: string): BooleanExp
  * This is intentional as the compiler generates safe code from validated input.
  */
 function createFunction<V extends VariantDef>(source: string): CompiledStyleFn<V> {
-  // oxlint-disable-next-line typescript-eslint/no-implied-eval, no-new-func
+  // eslint-disable-next-line typescript-eslint/no-implied-eval, no-new-func
   // The source is compiler-generated from validated StyleMatrix, not user input
   // eslint-disable-next-line @typescript-eslint/no-implied-eval
   return new Function(`return ${source}`)() as CompiledStyleFn<V>

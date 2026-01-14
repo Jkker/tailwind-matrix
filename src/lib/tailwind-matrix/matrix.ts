@@ -117,8 +117,11 @@ export function validateMatrix<V extends VariantDef, Columns extends readonly st
       throw new Error(`Row ${i} condition must be an object`)
     }
 
-    // Validate condition keys and values
-    for (const [key, value] of Object.entries(condition) as [string, string][]) {
+    // Validate condition keys and values with explicit type checking
+    for (const [key, value] of Object.entries(condition)) {
+      if (typeof value !== 'string') {
+        throw new Error(`Row ${i} has non-string value for variant "${key}"`)
+      }
       if (!variantKeys.has(key)) {
         throw new Error(`Row ${i} has unknown variant key "${key}"`)
       }
