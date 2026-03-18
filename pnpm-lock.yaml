@@ -3850,8 +3850,8 @@ packages:
   undici-types@7.16.0:
     resolution: {integrity: sha512-Zz+aZWSj8LE6zoxD+xrjh4VfkIG8Ya6LvYkZqtUQGJPZjYl53ypCaUwWqo7eI0x66KBGeRo+mlBEkMSeSZ38Nw==}
 
-  undici@6.22.0:
-    resolution: {integrity: sha512-hU/10obOIu62MGYjdskASR3CUAiYaFTtC9Pa6vHyf//mAipSvSQg6od2CnJswq7fvzNS3zJhxoRkgNVaHurWKw==}
+  undici@6.23.0:
+    resolution: {integrity: sha512-VfQPToRA5FZs/qJxLIinmU59u0r7LXqoJkCzinq3ckNJp3vKEh7jTWN589YQ5+aoAC/TGRLyJLCPKcLQbM8r9g==}
     engines: {node: '>=18.17'}
 
   unicorn-magic@0.1.0:
@@ -5720,7 +5720,7 @@ snapshots:
       '@types/express': 5.0.6
       commander: 14.0.2
       express: 5.2.1
-      undici: 6.22.0
+      undici: 6.23.0
       zod: 3.25.76
     transitivePeerDependencies:
       - '@cfworker/json-schema'
@@ -7756,7 +7756,7 @@ snapshots:
 
   undici-types@7.16.0: {}
 
-  undici@6.22.0: {}
+  undici@6.23.0: {}
 
   unicorn-magic@0.1.0: {}
 
